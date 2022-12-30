@@ -146,13 +146,13 @@ function handleClick(click)
     var bottom = parseInt(pointer.style.bottom);
     
         var x = Math.round(click.pageX);
-        var y = Math.round(click.pageY);
-        console.log(x);
-        console.log(y);
+        var y = Math.ceil(click.pageY)+10;
+        // console.log(x);
+        // console.log(y);
         x = (x - (x % 32)) / 32 - 3;
         y = 16 - (y - (y % 32)) / 32;
-        console.log(x);
-        console.log(y);
+        // console.log(x);
+        // console.log(y);
         pointer.style.bottom = y;
         pointer.style.left = x;
         if (man.go(x, y) != 0) {
