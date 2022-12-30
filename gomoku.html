@@ -135,6 +135,52 @@ function handleKeyPress(key)
     return false;
 }
 
+function handleClick(click)
+{
+    var pointer = document.getElementById('pointer');
+    var background = document.getElementById('board');
+    var backgroundHeight = background.offsetHeight;
+    var backgroundWidth = background.offsetWidth;
+    
+    var left = parseInt(pointer.style.left);
+    var bottom = parseInt(pointer.style.bottom);
+    
+        var x = Math.round(click.pageX);
+        var y = Math.round(click.pageY);
+        console.log(x);
+        console.log(y);
+        x = (x - (x % 32)) / 32 - 3;
+        y = 16 - (y - (y % 32)) / 32;
+        console.log(x);
+        console.log(y);
+        pointer.style.bottom = y;
+        pointer.style.left = x;
+        if (man.go(x, y) != 0) {
+            return false;
+        }
+        var ret = board.judge(man.color, x, y);
+        if (ret == GLOBAL.boardStatus.WIN) {
+            win(man.name);
+        }
+        else if (ret == GLOBAL.boardStatus.FORBIDDEN_LONG_CHAIN) {
+            lose(man.name, ret);
+        }
+
+        var point = machine.defensiveMoveLevel1();
+        pointer.style.left = point.x * 32 + 3 + 'px';
+        pointer.style.bottom = point.y * 32 + 5 + 'px';
+        ret = board.judge(machine.color, point.x, point.y);
+        if (ret == GLOBAL.boardStatus.WIN) {
+            win(machine.name);
+        }
+        else if (ret == GLOBAL.boardStatus.FORBIDDEN_LONG_CHAIN) {
+            lose(machine.name, ret);
+        }
+        
+    
+    return false;
+}
+
 function main()
 {
     man.setColor(GLOBAL.color.BLACK);
@@ -148,6 +194,7 @@ function main()
     pointer.style.left = left + 'px';
     pointer.style.bottom = bottom + 'px';
     document.body.addEventListener('keydown', handleKeyPress);
+    document.body.addEventListener('mousedown', handleClick);
 }
 main();
 </script>
