@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #000000;
+    height: 100%;
+    width: 100%;
+}
+
+#header {
+    background: #000000;
+    height: 50px;
+    width: 100%;
+}
+#main {
+    background: #000000;
+    position: absolute;
+    left: 100px;
+}
+#panel {
+    float: right;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: normal;
+    color: #F0F0F0;
+    padding-right: 5px;
+    z-index: 1;
+}
+#pointer {
+    position: absolute;
+    bottom: 3px;
+    left: 3px;
+}
+#gameover {
+    display: none;
+    position: absolute;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: xx-large;
+    font-style: bold;
+    color: #F0F0F0;
+    background-color: #000000;
+    z-index: 1;
+    opacity: 0.8;
+}
+#debugmsg {
+    position: absolute;
+    font-size: xx-small;
+    font-style: bold;
+    color: #80F000;
+}
