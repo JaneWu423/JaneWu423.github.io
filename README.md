@@ -1,2 +1,1 @@
-# JaneWu423.github.io
-testing GitHub pages
+# copied project v-card
